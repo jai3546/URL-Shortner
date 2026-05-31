@@ -12,6 +12,16 @@ A feature-rich, full-stack URL shortening service built with the MERN stack (Mon
 
 *A set of screenshots showcasing the application's functionality, including the anonymous URL shortening feature, shortening a URL, logging in, and viewing the link on the personal dashboard.*
 
+Homepage
+
+<img width="1917" height="731" alt="image" src="https://github.com/user-attachments/assets/91a69d69-1d7d-4787-9e7a-2c2a03b2a8d7" />
+
+---
+
+User Dashboard
+
+<img width="1917" height="731" alt="image" src="https://github.com/user-attachments/assets/9c65a8a1-45c1-439c-98f0-d02fa5cf903e" />
+
 
 
 ---
