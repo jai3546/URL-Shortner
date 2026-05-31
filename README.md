@@ -102,36 +102,62 @@ cd [Your-Repo-Name]
   - Payload: None
   - Headers: None
 ---
+## Backend Setup
 
-### 2. Backend Setup
+- Move into the backend directory:
 
-```bash
-# Install backend dependencies
-npm install
+   ```bash
+    cd server
+   ```
 
-# Create a .env file in the /server directory
-# and add the following variables
-touch .env
+- Install backend dependencies:
+
+   ```bash
+   npm install
+   ```
+
+ - Create a `.env` file inside the `server` directory:
+
+     ```bash
+      touch .env
+     ```
+
+ - Add the following environment variables:
+
+   ```env
+   PORT=5000
+
+   MONGO_URI=your_mongodb_connection_string
+
+   JWT_SECRET=your_super_secret_jwt_key
+   ```
+
+- Start the backend server:
+
+   ```bash
+    npm run dev
+   ```
 
 ---
 
-Open your newly created /.env file in your preferred text editor and configure the following environment variables:
+## Frontend Setup
 
-```env
-# The execution port for your backend server
-PORT=5000
+ - Move into the frontend directory:
 
-# Your secure MongoDB cluster connection string setup
-MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/shortly?retryWrites=true&w=majority
+     ```bash
+    cd client
+     ```
 
-# Secret passphrase key used to sign client JSON Web Tokens (use a long, complex string)
-JWT_SECRET=your_super_secret_jwt_key_here
+ - Install frontend dependencies:
 
-### Frontend Environment Configuration
+   ```bash
+    npm install
+     ```
 
-# Return to the root folder and step into the client workspace
-cd ../client
+- Start the React development server:
 
-# Install frontend dependencies and build tools
-npm install
+    ```bash
+     npm start
+     ```
+
 
