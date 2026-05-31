@@ -65,8 +65,8 @@ Follow these steps to get the project running on your local machine.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/[Your-GitHub-Username]/[Your-Repo-Name].git
-cd [Your-Repo-Name]
+git clone https://github.com/jai3546/URL-Shortner.git
+cd URL-Shortner
 ```
 
 ---
