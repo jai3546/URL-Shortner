@@ -44,9 +44,14 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client/dist')));
 
   // For any client-side routes (like /dashboard or /login), serve index.html
-  app.get('/:splat*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'));
-  });
+  // Express custom string pattern parsing matching completely avoid cheyadaniki direct internal handler check structure
+app.use((req, res, next) => {
+    // Okavela dynamic request paths backend /api points custom layout lines components paths trace matches dynamic range trigger matching checking code
+    if (!req.path.startsWith('/api')) {
+        return res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'));
+    }
+    next();
+});
 }
 
 // Global Error Handler Middleware
