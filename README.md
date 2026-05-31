@@ -4,7 +4,7 @@
 
 A feature-rich, full-stack URL shortening service built with the MERN stack (MongoDB, Express.js, React, Node.js). This application allows users to shorten long URLs, track click analytics, and manage their links through a private, authenticated dashboard.
 
-**Live Demo:** [Link to your deployed application]
+**Live Demo:** [Click Here](https://url-shortner-yqou.onrender.com/)
 
 ---
 
