@@ -10,8 +10,16 @@ import axios from 'axios';
  *          On success, this will be an object like: { success: true, data: { ...urlObject } }.
  *          On failure, the promise will be rejected with an error object.
  */
-export const createShortUrl = async (longUrl) => {
+export const createShortUrl = async (longUrl,token) => {
   // 2. Use a try...catch block to handle potential network errors gracefully.
+ const config = {};
+
+  // --- ADDED: If a valid token exists, build the standard Authorization header ---
+  if (token && token !== 'undefined' && token !== 'null'){
+    config.headers = {
+      Authorization: `Bearer ${token}`,
+    };
+  }
   try {
     // 3. Make the asynchronous POST request using axios.
     //    - The first argument is the URL of the API endpoint. We use a relative path
@@ -19,7 +27,7 @@ export const createShortUrl = async (longUrl) => {
     //      backend server (http://localhost:5000/api/shorten).
     //    - The second argument is the request body (the payload). Our backend
     //      expects an object with a 'longUrl' property.
-    const response = await axios.post('/api/shorten', { longUrl });
+    const response = await axios.post('/api/shorten', { longUrl } , config);
 
     // 4. If the request is successful, axios wraps the response in a 'data' object.
     //    We return this data so the component that called this function can use it.

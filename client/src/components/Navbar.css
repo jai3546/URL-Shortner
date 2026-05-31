@@ -1,0 +1,70 @@
+/* client/src/components/Navbar.css */
+
+/* The main container for the navigation bar */
+.navbar {
+  /* A dark background for contrast */
+  background-color: #2c3e50; 
+  /* Padding for vertical and horizontal spacing */
+  padding: 1rem 2rem;
+  /* Using flexbox is the modern standard for layout */
+  display: flex;
+  /* Pushes the brand to the left and links to the right */
+  justify-content: space-between;
+  /* Vertically aligns items in the center */
+  align-items: center;
+  /* Ensures the navbar is always on top */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Styling for the application's brand/logo */
+.navbar-brand a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* The container for the navigation links */
+.navbar-links {
+  /* Removes default bullet points from the list */
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  /* Creates space between the link items */
+  gap: 1.5rem;
+}
+
+/* Styling for individual navigation links */
+.navbar-links a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-size: 1rem;
+  /* Smooth color transition on hover */
+  transition: color 0.2s ease-in-out;
+}
+
+/* A simple hover effect to provide user feedback */
+.navbar-links a:hover {
+  color: #3498db; /* A bright blue for hover */
+}
+
+/* Add this to client/src/components/Navbar.css */
+
+.btn-logout-nav {
+  background: none;
+  border: none;
+  color: #ecf0f1;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease-in-out;
+}
+
+.btn-logout-nav:hover {
+  color: #3498db;
+}

@@ -52,6 +52,9 @@ app.use('/api/links', linksRoutes);
 const indexRoutes = require('./routes/index');
 app.use('/', indexRoutes);
 
+const errorHandler = require('./middleware/errorMiddleware');
+app.use(errorHandler);
+
 // Define the port the server will run on.
 const PORT = process.env.PORT || 5000;
 

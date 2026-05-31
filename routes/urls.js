@@ -18,7 +18,7 @@ const router = express.Router();
  */
 // We now pass the 'shortenUrl' controller function as the handler for this route.
 // Express will automatically invoke this function with (req, res) when the route is matched.
-router.post('/shorten', shortenUrl);
-
+//router.post('/shorten', shortenUrl);
+router.post('/shorten', auth, shortenUrl);
 // Export the router
 module.exports = router;
