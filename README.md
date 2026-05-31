@@ -20,7 +20,8 @@ Homepage
 
 User Dashboard
 
-<img width="1917" height="731" alt="image" src="https://github.com/user-attachments/assets/9c65a8a1-45c1-439c-98f0-d02fa5cf903e" />
+<img width="1915" height="876" alt="image" src="https://github.com/user-attachments/assets/b64f644a-ef17-4037-9b9b-e976fbb55fe2" />
+
 
 
 
