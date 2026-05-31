@@ -2,8 +2,6 @@ const dns = require('dns');
 dns.setServers(['8.8.8.8', '8.8.4.4']); // Use Google's reliable phone book
 
 // Import and configure dotenv to load environment variables from .env file
-// This line should be at the very top to ensure variables are available globally
-// Import and configure dotenv to load environment variables from .env file
 require('dotenv').config();
 
 // Import the connectDB function we created in config/db.js
@@ -11,6 +9,7 @@ const connectDB = require('./config/db');
 
 // Import the Express library
 const express = require('express');
+const path = require('path'); // <-- Added for production path handling
 
 // Call the function to connect to the database
 connectDB();
@@ -18,40 +17,39 @@ connectDB();
 // Initialize an instance of the Express application
 const app = express();
 
-// --- ADD THIS MIDDLEWARE ---
-// This is a crucial piece of Express middleware. It parses incoming requests
-// with JSON payloads. Without this, you won't be able to access `req.body`.
+// Middleware to parse incoming requests with JSON payloads
 app.use(express.json());
 
-// Define a simple route for the root URL ('/')
-app.get('/', (req, res) => {
-  res.send('API is running...');
-});
-
-// --- ADD ROUTE HANDLING ---
-// Import the URL routes
+// --- API ROUTE HANDLING ---
+// Import and mount the URL routes
 const urlRoutes = require('./routes/urls');
-
-// Mount the router: Tell the app to use the 'urlRoutes' for any request
-// that starts with '/api'.
 app.use('/api', urlRoutes);
 
-
-// --- ADD THIS NEW ROUTE HANDLER ---
 // Mount the API routes for authentication
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 
-// --- ADD THIS NEW ROUTE HANDLER ---
 // Mount the API routes for fetching user-specific links
 const linksRoutes = require('./routes/links');
 app.use('/api/links', linksRoutes);
 
-// 2. Mount the index/redirect routes second.
-// Any other GET request will be potentially handled by this router.
+// Mount the index/redirect routes
 const indexRoutes = require('./routes/index');
 app.use('/', indexRoutes);
 
+// --- PRODUCTION SERVING HACK (RENDER SINGLE-PLATFORM) ---
+// This serves your frontend assets compiled by Vite directly from the client folder
+if (process.env.NODE_ENV === 'production') {
+  // Serve static assets from Vite's build directory
+  app.use(express.static(path.join(__dirname, 'client/dist')));
+
+  // For any client-side routes (like /dashboard or /login), serve index.html
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'));
+  });
+}
+
+// Global Error Handler Middleware
 const errorHandler = require('./middleware/errorMiddleware');
 app.use(errorHandler);
 
